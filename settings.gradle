@@ -1,0 +1,6 @@
+include ':Baselibs'
+include ':Baselibs'
+include ':member'
+include ':login'
+include ':app'
+rootProject.name = "moduleTest"
