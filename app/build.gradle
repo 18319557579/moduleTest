@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
+def is_Module = isApp
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -37,12 +38,17 @@ android {
 
 dependencies {
 
-    if (! is_Module.toBoolean()) {
-        rootProject.ext.other.each {
+    if (is_Module.toBoolean()) {
+/*        rootProject.ext.other.each {
             implementation project(it)
-        }
-        implementation project(path:':login')
-        implementation project(path:':member')
+        }*/
+//        implementation project(path:':login')
+//        implementation project(path:':member')
+
+        implementation project(rootProject.ext.module.Baselibs)
+
+        implementation project(rootProject.ext.module.login)
+        implementation project(rootProject.ext.module.member)
     }
 
     implementation rootProject.ext.androidxDeps["appcompat"]

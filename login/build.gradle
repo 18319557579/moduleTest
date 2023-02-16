@@ -5,6 +5,8 @@
         id 'com.android.library'
     }
 }*/
+def is_Module = isLogin
+
 if(is_Module.toBoolean()){
     apply plugin: 'com.android.application'
 }else{
@@ -63,9 +65,7 @@ android {
 dependencies {
 
 //    implementation project(rootProject.ext.dependencies.other)
-    rootProject.ext.other.each {
-        implementation project(it)
-    }
+    implementation project(rootProject.ext.module.Baselibs)
 
     implementation rootProject.ext.androidxDeps["appcompat"]
     implementation rootProject.ext.androidxDeps["material"]

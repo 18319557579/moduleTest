@@ -26,5 +26,10 @@ ext {
 
     androidxLibs = androidxDeps.values()
 
-    other = [':Baselibs']
+
+    module = [
+            "Baselibs":[path:':Baselibs'],
+            "login": [path:':login'],
+            "member": [path:':member']
+    ]
 }
