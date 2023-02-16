@@ -4,7 +4,8 @@
 
     <application
         android:theme="@style/Theme.ModuleTest">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:launchMode="singleTask">
         </activity>
 
     </application>

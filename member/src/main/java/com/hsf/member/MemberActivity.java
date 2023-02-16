@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MemberActivity extends AppCompatActivity {
+import com.hsf.baselibs.BaseActivity;
+
+public class MemberActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_member);
+//        setContentView(R.layout.activity_member);
     }
 }

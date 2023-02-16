@@ -34,6 +34,9 @@ dependencies {
     rootProject.ext.other.each {
         implementation project(it)
     }
+    implementation project(path:':login')
+    implementation project(path:':member')
+
 
     implementation rootProject.ext.androidxDeps["appcompat"]
     implementation rootProject.ext.androidxDeps["material"]
