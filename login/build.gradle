@@ -27,6 +27,12 @@ android {
         versionName rootProject.ext.android["versionName"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
     }
 
     buildTypes {
@@ -65,6 +71,7 @@ dependencies {
     implementation rootProject.ext.androidxDeps["material"]
     implementation rootProject.ext.androidxDeps["constraintlayout"]
 
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 //    testImplementation 'junit:junit:4.+'
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'

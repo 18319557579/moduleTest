@@ -15,6 +15,12 @@ android {
         versionName rootProject.ext.android["versionName"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
     }
 
     buildTypes {
@@ -31,14 +37,17 @@ android {
 
 dependencies {
 
-    rootProject.ext.other.each {
-        implementation project(it)
+    if (! is_Module.toBoolean()) {
+        rootProject.ext.other.each {
+            implementation project(it)
+        }
+        implementation project(path:':login')
+        implementation project(path:':member')
     }
-    implementation project(path:':login')
-    implementation project(path:':member')
-
 
     implementation rootProject.ext.androidxDeps["appcompat"]
     implementation rootProject.ext.androidxDeps["material"]
     implementation rootProject.ext.androidxDeps["constraintlayout"]
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 }

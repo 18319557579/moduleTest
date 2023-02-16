@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.hsf.baselibs.BaseActivity;
 import com.hsf.login.LoginActivity;
 import com.hsf.member.MemberActivity;
@@ -44,6 +45,21 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         }).setText("跳转MemberActivity");
+
+        setClickSkip3(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/login/login").navigation();
+            }
+        }).setText("用ARouter跳转Login");
+
+
+        setClickSkip4(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/member/member").navigation();
+            }
+        }).setText("用ARouter跳转Member");
 
 
     }
