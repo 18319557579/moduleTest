@@ -49,5 +49,5 @@ dependencies {
     implementation rootProject.ext.androidxDeps["material"]
     implementation rootProject.ext.androidxDeps["constraintlayout"]
 
-    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+    annotationProcessor rootProject.ext.annotationDeps["arouter_compiler"]
 }

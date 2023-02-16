@@ -15,6 +15,15 @@ ext {
             "constraintlayout": 'androidx.constraintlayout:constraintlayout:2.1.4'
     ]
 
+    externalDeps = [
+            "arouter_api": 'com.alibaba:arouter-api:1.5.1',
+
+    ]
+
+    annotationDeps = [
+            "arouter_compiler": 'com.alibaba:arouter-compiler:1.5.1'
+    ]
+
     androidxLibs = androidxDeps.values()
 
     other = [':Baselibs']
