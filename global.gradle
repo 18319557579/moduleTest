@@ -1,0 +1,30 @@
+ext {
+    applicationList = []
+    libraryList = []
+    appOrLibList = []
+
+    //设置application
+    setApplication = { name ->
+        this.applicationList.add(name)
+    }
+
+    //设置library
+    setLibrary = { name ->
+        this.libraryList.add(name)
+    }
+
+    //设置app和lib切换的
+    setAppOrLib = { name ->
+        this.appOrLibList.add(name)
+    }
+
+    //判断是不是app和lib切换的
+    isAppOrLib = { name ->
+        return this.appOrLibList.contains(name)
+    }
+
+    //判断要调试是不是当前的组件
+    isCurrentModule = { name ->
+        return moduleName == name
+    }
+}

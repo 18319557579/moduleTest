@@ -1,0 +1,69 @@
+//如果是当前组件的话就用app，否则都用lib
+if (isCurrentModule(project.getName())) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "30.0.0"
+
+    defaultConfig {
+        //当前组件，如果app的话就用项目包名，如果是其他子组件就用manifest的包名
+        if (isCurrentModule(project.getName())) {
+            applicationId "com.hsf.moduletest"
+        }
+
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+                /*println("打印当前的项目名 " + project.getName() + " / " + rootProject.ext.isAppOrLib(project.getName())
+                        + " / " + applicationList.any {
+                    return it == project.getName()
+                })*/
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            //只有app若lib的组件才需要
+            if (rootProject.ext.isAppOrLib(project.getName())) {
+                if (rootProject.ext.isCurrentModule(project.getName())) {
+                    manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+                    java.srcDir 'src/main/module'
+                } else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+}

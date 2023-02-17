@@ -3,8 +3,20 @@
     package="com.hsf.member">
 
     <application
-        android:theme="@style/Theme.ModuleTest">
-        <activity android:name=".MemberActivity">
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ModuleTest"
+        android:name="com.hsf.login.MemberApplication">
+        <activity android:name=".MemberActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
