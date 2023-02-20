@@ -10,11 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.hsf.baselibs.databinding.ActivityBaseBinding;
+
 import java.util.Random;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected String className;
+    ActivityBaseBinding activityBaseBinding;
 
     {
         Random random = new Random();
@@ -24,18 +27,18 @@ public class BaseActivity extends AppCompatActivity {
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        activityBaseBinding = ActivityBaseBinding.inflate(getLayoutInflater());
+        setContentView(activityBaseBinding.getRoot());
         Log.d("Daisy", "onCreate回调 " + getClass().getName() + " " + className);
 
-        ((TextView)findViewById(R.id.tv_class_name)).setText(getClass().getName() + " " + className + " ");
+        activityBaseBinding.tvClassName.setText(getClass().getName() + " " + className + " ");
 
-        Button btnGetTask = findViewById(R.id.btn_get_task);
-        btnGetTask.setVisibility(View.VISIBLE);
-        btnGetTask.setOnClickListener(new View.OnClickListener() {
+        activityBaseBinding.btnGetTask.setVisibility(View.VISIBLE);
+        activityBaseBinding.btnGetTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("Daisy", "获得task " + getTaskId());
-                btnGetTask.setText("获得task " + getTaskId());
+                activityBaseBinding.btnGetTask.setText("获得task " + getTaskId());
             }
         });
 

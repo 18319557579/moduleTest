@@ -45,6 +45,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     sourceSets {
         main {
             //只有app若lib的组件才需要
