@@ -55,6 +55,13 @@ public class MainActivity extends BaseActivity {
             }
         }).setText("用ARouter跳转Member");
 
+        setClickSkip5(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/webView/main").navigation();
+            }
+        }).setText("跳WebView");
+
 
     }
 

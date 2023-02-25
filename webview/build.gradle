@@ -1,0 +1,7 @@
+rootProject.ext.setAppOrLib(project.name)
+
+apply from: "${rootProject.rootDir}/universal.gradle"
+
+dependencies {
+    implementation project(path:':Baselibs')
+}

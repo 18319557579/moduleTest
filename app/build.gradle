@@ -6,4 +6,5 @@ dependencies {
     implementation project(path:':Baselibs')
     implementation project(path:':login')
     implementation project(path:':member')
+    implementation project(path:':webview')
 }

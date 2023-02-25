@@ -13,12 +13,12 @@ ext {
         this.libraryList.add(name)
     }
 
-    //设置app和lib切换的
+    //设置可切换app/lib的
     setAppOrLib = { name ->
         this.appOrLibList.add(name)
     }
 
-    //判断是不是app和lib切换的
+    //判断是不是可切换app/lib的
     isAppOrLib = { name ->
         return this.appOrLibList.contains(name)
     }

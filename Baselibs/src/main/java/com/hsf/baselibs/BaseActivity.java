@@ -14,22 +14,15 @@ import com.hsf.baselibs.databinding.ActivityBaseBinding;
 
 import java.util.Random;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends LogActivity {
 
-    protected String className;
+
     ActivityBaseBinding activityBaseBinding;
-
-    {
-        Random random = new Random();
-        int randomNum = random.nextInt(999999);
-        className = String.valueOf(randomNum);
-    }
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityBaseBinding = ActivityBaseBinding.inflate(getLayoutInflater());
         setContentView(activityBaseBinding.getRoot());
-        Log.d("Daisy", "onCreate回调 " + getClass().getName() + " " + className);
 
         activityBaseBinding.tvClassName.setText(getClass().getName() + " " + className + " ");
 
@@ -42,48 +35,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Log.d("Daisy", "onNewIntent回调 " + getClass().getName() + " "+ className);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("Daisy", "onStart回调 " + getClass().getName() + " " + className);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("Daisy", "onResume回调 " + getClass().getName() + " " + className);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("Daisy", "onPause回调 " + getClass().getName() + " " + className);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("Daisy", "onStop回调 " + getClass().getName() + " " + className);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("Daisy", "onDestroy回调 " + getClass().getName() + " " + className);
-    }
-
-    protected void setClickGetTask(View.OnClickListener onClickListener) {
-        Button btnGetTask = findViewById(R.id.btn_get_task);
-        btnGetTask.setVisibility(View.VISIBLE);
-        btnGetTask.setOnClickListener(onClickListener);
     }
 
     protected Button setClickSkip1(View.OnClickListener onClickListener) {
