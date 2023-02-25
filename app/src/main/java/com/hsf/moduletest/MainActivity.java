@@ -1,9 +1,11 @@
 package com.hsf.moduletest;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,16 +21,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-
-        /*btnSkipLogin = findViewById(R.id.btn_skip_button);
-        btnSkipLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });*/
 
         setClickSkip1(new View.OnClickListener() {
             @Override
@@ -49,9 +41,11 @@ public class MainActivity extends BaseActivity {
         setClickSkip3(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build("/login/login").navigation();
+                ARouter.getInstance().build("/login/login")
+                        .withString("name", "hsf")
+                        .navigation(MainActivity.this, 100);
             }
-        }).setText("用ARouter跳转Login");
+        }).setText("用ARouter跳转Login（携带数据，并期望返回数据）");
 
 
         setClickSkip4(new View.OnClickListener() {
@@ -62,5 +56,17 @@ public class MainActivity extends BaseActivity {
         }).setText("用ARouter跳转Member");
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 100:
+                if (resultCode == RESULT_OK) {
+                    String resultData = data.getStringExtra("result");
+                    Log.d("Daisy", "数据已返回" + resultData);
+                }
+        }
     }
 }
