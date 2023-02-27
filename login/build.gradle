@@ -4,4 +4,5 @@ apply from: "${rootProject.rootDir}/universal.gradle"
 
 dependencies {
     implementation project(path:':Baselibs')
+    implementation project(path:':webview')
 }
