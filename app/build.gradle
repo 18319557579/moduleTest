@@ -3,7 +3,7 @@ rootProject.ext.setApplication(project.name)
 apply from: "${rootProject.rootDir}/universal.gradle"
 
 dependencies {
-    implementation project(path:':Baselibs')
+    implementation project(path:':baselibs')
     implementation project(path:':login')
     implementation project(path:':member')
     implementation project(path:':webview')

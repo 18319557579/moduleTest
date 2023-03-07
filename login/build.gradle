@@ -3,6 +3,6 @@ rootProject.ext.setAppOrLib(project.name)
 apply from: "${rootProject.rootDir}/universal.gradle"
 
 dependencies {
-    implementation project(path:':Baselibs')
+    implementation project(path:':baselibs')
     implementation project(path:':webview')
 }

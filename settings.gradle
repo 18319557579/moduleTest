@@ -1,5 +1,5 @@
 include ':webview'
-include ':Baselibs'
+include ':baselibs'
 include ':member'
 include ':login'
 include ':app'
